@@ -1,0 +1,16 @@
+main: 
+    irmovq $1,%r8
+    
+    loop:
+     addq %r8, %rax #rax += 1
+     subq %rsi,%rdi #5-2
+     jg suurempi
+     
+    jmp ohitus
+    suurempi:
+        jg loop
+    ohitus:
+        subq %r8, %rax
+        halt 
+     
+    

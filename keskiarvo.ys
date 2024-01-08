@@ -1,0 +1,32 @@
+main:
+    irmovq $0,%r8
+    irmovq $1,%r9
+    irmovq $8, %r11
+    
+    loop1:
+        mrmovq (%rsp),%r10
+        addq %r10,%rdx
+        addq %r8,%r10
+        jg suurempi
+        jmp jako
+        
+suurempi:
+    addq %r11,%rsp
+    addq %r9,%r12 #jakaja
+    jg loop1
+    
+jako:
+    loop:
+        addq %r9,%rax #rax+1
+        subq %r12,%rdx #5-2# if rdi > rsi
+        
+        jg suurempi1
+        
+        jmp ohitus
+        suurempi1:
+            jg loop 
+        ohitus:
+            subq %r9,%rax
+            halt
+
+            

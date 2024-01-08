@@ -1,0 +1,42 @@
+main:
+    rrmovq %r11, %rdi
+    rrmovq %r11, %rsi
+    rrmovq %r11, %r12
+    rrmovq %r11, %r13
+    
+    irmovq $0, %r14
+    irmovq $8, %r8
+
+looppi:
+    mrmovq (%rsp), %r9
+    addq %r14, %r9
+    jg onkoIsompi
+    jmp quit
+
+onkoIsompi:
+    subq %r9, %r12
+    jle asetaSuuri
+    rrmovq %rdi, %r12
+    jmp onkoPienempi
+
+asetaSuuri:
+    rrmovq %r9, %rdi
+    rrmovq %rdi, %r12
+    addq %r8, %rsp
+    jmp looppi
+
+onkoPienempi:
+    subq %r9, %r13
+    jge asetaPieni
+    rrmovq %rsi, %r13
+    addq %r8, %rsp
+    jmp looppi
+
+asetaPieni:
+    rrmovq %r9, %rsi
+    rrmovq %rsi, %r13
+    addq %r8, %rsp
+    jmp looppi
+
+quit:
+    halt
